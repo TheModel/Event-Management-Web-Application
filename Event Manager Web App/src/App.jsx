@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-// Function that runs the Web Application
+
 function App() {
   const [count, setCount] = useState(0)
 
