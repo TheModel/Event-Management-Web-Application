@@ -10,4 +10,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 
 
-// This is basically all I can say about JavaScript
