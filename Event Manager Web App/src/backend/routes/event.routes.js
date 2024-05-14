@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import express from 'express'
-import { Event } from '../models/event.model';
+import { Event } from '../models/event.model.js';
 
 const router = express.Router();
 

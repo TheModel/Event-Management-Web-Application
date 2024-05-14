@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 import express from 'express'
 import cors from 'cors'
 import bodyParser from "body-parser";
-import { router as EventRoutes } from "./routes/event.routes";
-import { mongodb_connection } from "../api/mongodb";
+import { router as EventRoutes } from "./routes/event.routes.js";
+import { mongodb_connection } from "../api/mongodb.js";
 
 
 //Create Web Server Insatnce using express.js
@@ -15,10 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/events',EventRoutes)
 //Connect to MongoDB
-mongoose.connect(mongodb_connection,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect(mongodb_connection)
 .then(()=>{
     console.log("Connected to Database");
     app.listen(PORT,()=>{

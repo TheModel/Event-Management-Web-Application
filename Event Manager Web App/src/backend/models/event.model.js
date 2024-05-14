@@ -8,8 +8,5 @@ const eventSchema = new  mongoose.Schema(
     }
 )
 
-const Event = eventSchema.model('Event',eventSchema);
+export const Event = mongoose.model('Event',eventSchema);
 
-export{
-    Event
-}
