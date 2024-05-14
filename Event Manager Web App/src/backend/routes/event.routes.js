@@ -9,7 +9,8 @@ const router = express.Router();
 router.get('/',async (req,res) =>{
     try{
         const events = await Event.find();
-        res.status(200).json({message: "Event retrieved Successfully"})
+        console.log('Events retrieved successfuly')
+        res.status(200).json(events)
     }catch(error){
         res.status(500).json({message: error.message})
     }
@@ -26,7 +27,7 @@ router.post('/',async (req,res)=>{
 
     try {
         const new_event = event.save()
-        res.status(200).json(new_event);
+        res.status(200).json({message: "Event added Successfully"});
     } catch (error) {
         res.status(500).json({message: error.message})
     }
