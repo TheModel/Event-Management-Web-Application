@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Event Management App</h1>
+        <h1>Eventify</h1>
       </div>
         
     </>
