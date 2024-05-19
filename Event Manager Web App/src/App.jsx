@@ -1,7 +1,5 @@
 
-
 function App() {
-  
 
   return (
     <>
@@ -10,7 +8,7 @@ function App() {
       </div>
         
     </>
-  )
+  );
 }
 
 export default App
