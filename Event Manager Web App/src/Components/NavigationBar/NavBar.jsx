@@ -9,6 +9,14 @@ const NavBar = () => {
             <li>Events</li>
             <li>Contact Us</li>
         </ul>
+        <div className='navbar-right'>
+            <img src=""></img>
+            <div className = "navbar-search-icon">
+                <img src=""></img>
+                <div className='dot'></div>
+            </div>
+            <button> SIGN IN</button>
+        </div>
     </div>
   )
 }
