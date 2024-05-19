@@ -1,16 +1,14 @@
+import NavBar from './Components/NavigationBar/NavBar';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <div>
-        <h1>Eventify</h1>
-      </div>
-        
-    </>
+    <div className='app'>
+      <NavBar/>
+    </div>
   );
 }
 
 export default App
+
 
 
