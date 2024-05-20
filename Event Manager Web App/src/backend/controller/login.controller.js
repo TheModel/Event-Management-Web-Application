@@ -1,6 +1,6 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 import bycrypt from "bcrypt"
-import {jwt} from "jsonwebtoken"
+import jwt from 'jsonwebtoken'
 
 
 const createSecretToken = (id) =>{
@@ -15,16 +15,17 @@ export const login = async (req,res) =>{
         return res.status(400).json({ message: "All input is required" });
     }
 
-    const user = User.findOne({email});
-    const verifyPassword  = await bycrypt.compare(password,user.password)
+    const user = await User.findOne({email:email});
+   
+    console.log(password , user)
 
-    if(!(email && verifyPassword)){
+    if(!(email && (await bycrypt.compare(password,user.password)))){
         return res.status(404).json({ message: "Invalid credentials" });
     }
     const token = createSecretToken(user._id)
 
     res.cookie("token", token, {
-        domain: "http://localhost:5173/", // Set your domain here
+        domain: "http://localhost:3000/", // Set your domain here
         path: "/", // Cookie is accessible from all paths
         expires: new Date(Date.now() + 86400000), // Cookie expires in 1 day
         secure: true, // Cookie will only be sent over HTTPS

@@ -1,7 +1,6 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt"
-
-import {jwt} from "jsonwebtoken"
+import jwt from 'jsonwebtoken'
 
 
 const createSecretToken = (id) =>{
@@ -12,8 +11,9 @@ const createSecretToken = (id) =>{
 
 export const createUser = async (req, res) => {
 
-    const {username,password,email} = req.body
+    
     try {
+        const {username,password,email} = req.body
       if (
         !(
           username &&
@@ -52,5 +52,6 @@ export const createUser = async (req, res) => {
       res.json(user);
     } catch (error) {
       console.log("Gott an error", error);
+      res.status(400).json({message:error.message})
     }
   };
