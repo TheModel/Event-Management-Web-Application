@@ -1,0 +1,26 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "3aa85961-7237-4b35-9521-1b5354fe1e80",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1715982935904"
+        }
+      },
+      "favorite": {
+        "name": "fonyuy"
+      },
+      "savedConnectionType": "favorite",
+      "connectionOptions": {
+        "connectionString": "mongodb+srv://fonyuy:fonyuy@cluster0.q2ibaih.mongodb.net/",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}
