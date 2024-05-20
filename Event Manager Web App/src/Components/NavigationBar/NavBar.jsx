@@ -1,3 +1,4 @@
+
 /* This code is for the navigation Bar and contains 
 --> Logo, to the left
 --> Navigation bar menu, in the middle
