@@ -1,4 +1,6 @@
-
+/* This is the App.jsx file where all our components are embedded for the webapplication to look
+good and more presentable
+*/
 import React from 'react';
 import ReactDOM  from 'react-dom';
 import NavBar from './Components/NavigationBar/NavBar';
