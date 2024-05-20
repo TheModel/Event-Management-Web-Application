@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ReactDOM } from 'react-dom';
+import ReactDOM  from 'react-dom';
 import NavBar from './Components/NavigationBar/NavBar';
 import {Routes, Route} from 'react-router-dom';
 import AddToEventList from './Pages/AddToEventList/AddToEventList';
