@@ -2,32 +2,9 @@ import React from 'react';
 import './Header.css';
 
 const Header = () => {
-    const openNewPage = async () => {
-        const currentPort = parseInt(window.location.port, 10);
-        if (isNaN(currentPort)) {
-            alert('Unable to determine current port. Please ensure the website is running.');
-            return;
-        }
-
-        const basePort = currentPort + 5;
-        const maxAttempts = 5; // Maximum number of attempts
-        let attempt = 0;
-        let urlOpened = false;
-
-        while (attempt < maxAttempts && !urlOpened) {
-            try {
-                const port = basePort + attempt;
-                await fetch(`http://localhost:${port}`);
-                window.open(`http://localhost:${port}`);
-                urlOpened = true;
-            } catch (error) {
-                attempt++;
-            }
-        }
-
-        if (!urlOpened) {
-            alert('Unable to open the URL. All specified ports are in use.');
-        }
+    const openNewPage = () => {
+        // Open the specified URL in a new tab or window
+        window.open('http://localhost:5174/');
     };
 
     return (
