@@ -1,6 +1,17 @@
 import basket_icon from './basket_icon.png'
 import logo from './logo.png'
 import header_img from './header_img.png'
+import img from './img.png'
+import img1 from './img1.png'
+import img2 from './img2.png'
+import img3 from './img3.png'
+import img4 from './img4.png'
+import img5 from './img5.png'
+import img6 from './img6.png'
+import img7 from './img7.png'
+import img8 from './img8.png'
+
+
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
 import menu_2 from './menu_2.png'
@@ -60,11 +71,21 @@ import order_icon from './order_icon_4.png'
 import parcel_icon from './parcel_icon_4.png'
 import profile_image from './profile_image_4.png'
 
+
 export const assets = {
     lock,
     logo,
     basket_icon,
     header_img,
+    img,
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
     search_icon,
     rating_starts,
     add_icon_green,
