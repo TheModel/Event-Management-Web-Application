@@ -5,6 +5,7 @@ const Header = () => {
     const openNewPage = () => {
         // Open the specified URL in a new tab or window
         window.open('http://localhost:5173/');
+
     };
 
     return (
