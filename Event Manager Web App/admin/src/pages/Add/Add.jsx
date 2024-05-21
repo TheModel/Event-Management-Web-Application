@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Add.css'
-import { assets,url } from '../../assets/assets';
+import { assets, url } from '../../assets/assets';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -17,6 +17,7 @@ const Add = () => {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
+        console.log('Add button clicked'); // Log statement added here
         const formData = new FormData();
         formData.append("name", data.name);
         formData.append("description", data.description);
@@ -25,7 +26,7 @@ const Add = () => {
         formData.append("image", image);
         const response = await axios.post(`${url}/api/food/add`, formData);
         if (response.data.success) {
-            toast.success("Event Added Succesfully")
+            toast.success("Event Added Successfully")
             setData({
                 name: "",
                 description: "",
@@ -34,9 +35,7 @@ const Add = () => {
             })
             setImage(false);
             window.location.href = 'http://localhost:5174/'
-            
-        }
-        else{
+        } else {
             toast.error(response.data.message)
         }
     }
@@ -81,7 +80,7 @@ const Add = () => {
                     </div>
                     <button type='submit' className='add-btn' >ADD</button>
                 </div>
-                     </form>
+            </form>
         </div>
     )
 }
