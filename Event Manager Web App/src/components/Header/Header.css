@@ -53,3 +53,7 @@
         padding: 2vw 4vw;
     }
 }
+
+.btn{
+    cursor: pointer;
+}
