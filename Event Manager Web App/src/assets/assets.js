@@ -70,6 +70,7 @@ import upload_area from './upload_area_4.png'
 import order_icon from './order_icon_4.png'
 import parcel_icon from './parcel_icon_4.png'
 import profile_image from './profile_image_4.png'
+import add_icon from './add_icon.png'
 
 
 export const assets = {
@@ -101,7 +102,8 @@ export const assets = {
     upload_area,
     order_icon,
     parcel_icon,
-    profile_image
+    profile_image,
+    add_icon
 }
 
 export const menu_list = [
