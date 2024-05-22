@@ -1,0 +1,1 @@
+export const mongodb_connection = "mongodb+srv://mash51:8dy06hkP3t6urxZQ@backenddb.hpihbx8.mongodb.net/?retryWrites=true&w=majority&appName=BackendDB"
