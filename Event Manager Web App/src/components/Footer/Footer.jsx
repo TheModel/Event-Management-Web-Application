@@ -13,7 +13,9 @@ const Footer = () => {
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                   <img src={assets.facebook_icon} alt="Facebook" />
                 </a>
-                <img src={assets.twitter_icon} alt="" />
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                  <img src={assets.twitter_icon} alt="Twitter" />
+                </a>
                 <img src={assets.linkedin_icon} alt="" />
             </div>
         </div>
