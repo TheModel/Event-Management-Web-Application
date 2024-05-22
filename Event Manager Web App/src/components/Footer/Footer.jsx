@@ -28,6 +28,38 @@ const Footer = () => {
               <li>About us</li>
               <li>Delivery</li>
               <li>Privacy policy</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
 
 
 
