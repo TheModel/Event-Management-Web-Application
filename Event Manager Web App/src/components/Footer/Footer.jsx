@@ -16,7 +16,9 @@ const Footer = () => {
                 <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
                   <img src={assets.twitter_icon} alt="Twitter" />
                 </a>
-                <img src={assets.linkedin_icon} alt="" />
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <img src={assets.linkedin_icon} alt="LinkedIn" />
+                </a>
             </div>
         </div>
         <div className="footer-content-center">
