@@ -10,9 +10,15 @@ const Footer = () => {
             <img src={assets.logo} alt="" />
             <p>Empowering Memorable Experiences – At Eventify, we are dedicated to helping you create unforgettable events with ease and efficiency. From planning to execution, we provide innovative tools and exceptional service to ensure every detail is perfect.</p>
             <div className="footer-social-icons">
-                <img src={assets.facebook_icon} alt="" />
-                <img src={assets.twitter_icon} alt="" />
-                <img src={assets.linkedin_icon} alt="" />
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                  <img src={assets.facebook_icon} alt="Facebook" />
+                </a>
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                  <img src={assets.twitter_icon} alt="Twitter" />
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <img src={assets.linkedin_icon} alt="LinkedIn" />
+                </a>
             </div>
         </div>
         <div className="footer-content-center">
