@@ -24,6 +24,10 @@ const Footer = () => {
         <div className="footer-content-center">
             <h2>COMPANY</h2>
             <ul>
+              <li>Home</li>
+              <li>About us</li>
+              <li>Delivery</li>
+              <li>Privacy policy</li>
 
 
 
@@ -183,7 +187,6 @@ const Footer = () => {
 
 
 
-              
             </ul>
         </div>
         <div className="footer-content-right">
