@@ -5,12 +5,10 @@ import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Cart from './pages/Cart/Cart'
 import LoginPopup from './components/LoginPopup/LoginPopup'
-import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
-import MyOrders from './pages/MyOrders/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Verify from './pages/Verify/Verify'
-import Admin from './pages/Admin'
+import Dashboard_Add from './pages/Dashboard/Dashboard_Add'
+import ListDashBoard from './pages/ListDashBoard/ListDashBoard'
 
 const App = () => {
 
@@ -21,14 +19,12 @@ const App = () => {
     <ToastContainer/>
     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
       <div className='app'>
-        <Navbar setShowLogin={setShowLogin}/>
+      <Navbar setShowLogin={setShowLogin}/>
         <Routes >
           <Route path='/' element={<Home />}/>
           <Route path='/cart' element={<Cart />}/>
-          <Route path='/order' element={<PlaceOrder />}/>
-          <Route path='/myorders' element={<MyOrders />}/>
-          <Route path='/verify' element={<Verify />}/>
-          <Route path='/admin' element={<Admin />}/>
+          <Route path='/add' element={<Dashboard_Add />}/>
+          <Route path='/list' element={<ListDashBoard/>}/>
         </Routes>
       </div>
       <Footer />

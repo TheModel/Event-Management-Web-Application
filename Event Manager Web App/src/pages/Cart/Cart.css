@@ -1,7 +1,12 @@
 .cart {
     margin: 100px 0px;
 }
-
+.title{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
 .cart hr {
     height: 1px;
     background-color: #E2E2E2;
@@ -14,6 +19,7 @@
     align-items: center;
     color: grey;
     font-size: max(1vw, 12px);
+    text-align: center;
 }
 
 .cart-items-item {

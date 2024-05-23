@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './Add.css'
-import { assets, url } from '../../assets/assets';
+import { assets} from '../../assets/assets';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const Add = () => {
-
+const Addform = () => {
+    
+    const url = "http://localhost:" // Enter Project Url after the (:)
     const [data, setData] = useState({
         name: "",
         description: "",
@@ -48,7 +49,7 @@ const Add = () => {
 
     return (
         <div className='add'>
-            <form className='flex-col' onSubmit={onSubmitHandler}>
+            <form className='flex-col' onSubmit={(e) =>{onSubmitHandler(e)}}>
                 <div className='add-img-upload flex-col'>
                     <p>Upload image</p>
                     <label htmlFor="image">
@@ -57,17 +58,17 @@ const Add = () => {
                     <input onChange={(e) => { setImage(e.target.files[0]) }} type="file" id="image" hidden required />
                 </div>
                 <div className='add-product-name flex-col'>
-                    <p>Product name</p>
-                    <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Type here' required />
+                    <p>Event name</p>
+                    <input name='name' onChange={(e) =>{onChangeHandler(e)}} value={data.name} type="text" placeholder='Type here' required />
                 </div>
                 <div className='add-product-description flex-col'>
-                    <p>Product description</p>
-                    <textarea name='description' onChange={onChangeHandler} value={data.description} type="text" rows={6} placeholder='Write content here' required />
+                    <p>Event description</p>
+                    <textarea name='description' onChange={(e) =>{onChangeHandler(e)}} value={data.description} type="text" rows={6} placeholder='Write content here' required />
                 </div>
                 <div className='add-category-price'>
                     <div className='add-category flex-col'>
-                        <p>Product category</p>
-                        <select name='category' onChange={onChangeHandler} >
+                        <p className='event-category'>Event category</p>
+                        <select name='category' onChange={(e) =>{onChangeHandler(e)}} >
                             <option value="Sports">Sports</option>
                             <option value="Martial Arts">Martial Arts</option>
                             <option value="Party">Party</option>
@@ -85,4 +86,4 @@ const Add = () => {
     )
 }
 
-export default Add
+export default Addform

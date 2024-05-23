@@ -1,17 +1,20 @@
-import Sidebar from '../components/Sidebar/Sidebar'
+import Sidebar from '../../components/Sidebar/Sidebar'
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import List from '../../components/List/List';
 
-const Admin = () => {
+
+const ListDashBoard = () => {
+
   return ( 
     <div className='app'>
       <ToastContainer/>
       <hr />
       <div className="app-content">
         <Sidebar/>
+        <List/>
       </div>
     </div>
   )
 }
 
-export default Admin
+export default ListDashBoard

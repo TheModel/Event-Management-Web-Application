@@ -4,13 +4,13 @@ import cors from 'cors'
 import bodyParser from "body-parser";
 import { router as EventRoutes } from "./routes/event.routes.js";
 import { router as AuthRoutes } from "./routes/auth.routes.js";
-import { mongodb_connection } from "../api/mongodb.js";
 import cookieParser from 'cookie-parser'
+import { mongodb_connection,port } from "../../config.js";
 
 
 //Create Web Server Insatnce using express.js
 const app = express();
-const PORT = 3000;
+//const PORT = 4000;
 
 //Middleware
 app.use(cors());
@@ -34,8 +34,8 @@ app.use((req, res, next) => {
 mongoose.connect(mongodb_connection)
 .then(()=>{
     console.log("Connected to Database");
-    app.listen(PORT,()=>{
-        console.log(`Server listening on port ${PORT}`)
+    app.listen(port,()=>{
+        console.log(`Server listening on port ${port}`)
     })
 })
 .catch(()=>{
