@@ -51,6 +51,7 @@ const StoreContextProvider = (props) => {
         setCartItems(response.data.cartData);
     }
 
+    
     useEffect(() => {
         async function loadData() {
             await fetchFoodList();
@@ -61,6 +62,7 @@ const StoreContextProvider = (props) => {
         }
         loadData()
     }, [])
+
 
     const contextValue = {
         url,
@@ -76,6 +78,7 @@ const StoreContextProvider = (props) => {
         setCartItems
     };
 
+
     return (
         <StoreContext.Provider value={contextValue}>
             {props.children}
@@ -83,5 +86,6 @@ const StoreContextProvider = (props) => {
     )
 
 }
+
 
 export default StoreContextProvider;
