@@ -58,16 +58,16 @@ const Addform = () => {
                     <input onChange={(e) => { setImage(e.target.files[0]) }} type="file" id="image" hidden required />
                 </div>
                 <div className='add-product-name flex-col'>
-                    <p>Product name</p>
+                    <p>Event name</p>
                     <input name='name' onChange={(e) =>{onChangeHandler(e)}} value={data.name} type="text" placeholder='Type here' required />
                 </div>
                 <div className='add-product-description flex-col'>
-                    <p>Product description</p>
+                    <p>Event description</p>
                     <textarea name='description' onChange={(e) =>{onChangeHandler(e)}} value={data.description} type="text" rows={6} placeholder='Write content here' required />
                 </div>
                 <div className='add-category-price'>
                     <div className='add-category flex-col'>
-                        <p>Product category</p>
+                        <p className='event-category'>Event category</p>
                         <select name='category' onChange={(e) =>{onChangeHandler(e)}} >
                             <option value="Sports">Sports</option>
                             <option value="Martial Arts">Martial Arts</option>

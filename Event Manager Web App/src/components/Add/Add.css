@@ -3,11 +3,11 @@
 /* Sidebar styles */
 .sidebar {
     width: 18%;
-    min-height: 100vh;
+    min-height: 71vh;
     border: 1.5px solid #A9A9A9;
     border-top: 0;
     float: left; /* Float the sidebar to the left */
-    margin-bottom: 269px; /* Add margin-bottom to create space at the bottom */
+    margin-bottom: 50px; /* Add margin-bottom to create space at the bottom */
 }
 
 .sidebar-options {
@@ -73,6 +73,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px; /* Adjust the gap between image upload and other elements */
+    align-items: center;
 }
 
 .add-img-upload img {
@@ -84,7 +85,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px; /* Adjust the gap between input fields */
 }
 
@@ -109,13 +110,23 @@
     padding: 10px;
 }
 
+.event-category{
+    padding-bottom: 10px;
+    text-align: center;
+
+}
+.add-category-flex-col{
+    align-items: center;
+}
+
 .add-btn {
-    max-width: 120px;
+    width: 120px;
     border: none;
-    padding: 10px;
+    padding: 15px;
     background-color: black;
     color: white;
     cursor: pointer;
     align-self: flex-start;
-    margin-top: 20px; /* Adjust the top margin of the button */
+    margin-top: 35px; /* Adjust the top margin of the button */
+    border-radius: 15px;
 }

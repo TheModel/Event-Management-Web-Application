@@ -10,9 +10,10 @@ const Cart = () => {
 
   return (
     <div className='cart'>
+      <p className='title'>My Event List</p>
       <div className="cart-items">
         <div className="cart-items-title">
-          <p>Items</p> <p>Title</p> <p>Number of Reminders</p> <p>Remove</p>
+          <p>Event</p> <p>Title</p> <p>Number of Reminders</p> <p>Remove</p>
         </div>
         <br />
         <hr />
