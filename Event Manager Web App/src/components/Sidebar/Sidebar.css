@@ -3,7 +3,7 @@
 /* Sidebar styles */
 .sidebar {
     width: 18%;
-    min-height: 100vh;
+    min-height: 68vh;
     border: 1.5px solid #A9A9A9;
     border-top: 0;
     float: left; /* Float the sidebar to the left */
