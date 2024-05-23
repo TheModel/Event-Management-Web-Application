@@ -6,19 +6,37 @@ import { router as EventRoutes } from "./routes/event.routes.js";
 import { router as AuthRoutes } from "./routes/auth.routes.js";
 import cookieParser from 'cookie-parser'
 import { mongodb_connection,port } from "../../config.js";
-
+import jwt from 'jsonwebtoken'
 
 //Create Web Server Insatnce using express.js
 const app = express();
 //const PORT = 4000;
 
 //Middleware
+
+const validateToken = (req,res,next) =>{
+
+    const token = req.token;
+
+    if(token == null){
+        return res.sendStatus(401).send({message:'User not logged in'})
+    }
+    jwt.verify(token,"Secret key",(err,user)=>{
+        if(err){
+            return res.sendStatus(403).send({message:"Invalid Token"})
+        }
+        req.user = user;
+        next();
+    }) 
+}
+app.use(express.json())
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/api/events',EventRoutes)
+app.use('/api/events',validateToken,EventRoutes)
 app.use('/api/auth', AuthRoutes)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 app.use((req, res, next) => {
   // Set CORS headers

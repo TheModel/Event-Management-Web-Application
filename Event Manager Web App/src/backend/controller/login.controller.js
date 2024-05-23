@@ -33,5 +33,6 @@ export const login = async (req,res) =>{
         sameSite: "None",
       });
 
+    res.send(token);
     res.json({token});
 }

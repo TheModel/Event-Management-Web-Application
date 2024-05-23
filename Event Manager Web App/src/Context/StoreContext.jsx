@@ -5,11 +5,11 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-    const url = "http://localhost:4000"
+    const url = "http://localhost:3000"
     const [food_list, setFoodList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
-
+    const [loggedIn,setloggedIn] = useState(false)
 
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
@@ -51,16 +51,33 @@ const StoreContextProvider = (props) => {
         setCartItems(response.data.cartData);
     }
 
-    
+    const logout =  async () =>{
+        await axios.get('http://localhost:3000/api/auth/logout')
+    }
     useEffect(() => {
-        async function loadData() {
-            await fetchFoodList();
-            if (localStorage.getItem("token")) {
+        // async function loadData() {
+        //    // await fetchFoodList();
+        //     if (localStorage.getItem("token")) {
+        //         
+        //         //await loadCartData({ token: localStorage.getItem("token") })
+        //     }
+        // }
+        async function validateToken(){
+            
+             await axios.post('http://localhost:3000/api/auth/token',JSON.stringify({token:token}))
+            .then((res)=>{
+                console.log(res.data);
+                const valid = res.data.valid
                 setToken(localStorage.getItem("token"))
-                await loadCartData({ token: localStorage.getItem("token") })
-            }
+                setloggedIn(valid)
+            }).catch((err)=>{
+                console.error(err)
+            })
+            console.log(token)
         }
-        loadData()
+        
+        validateToken()
+       
     }, [])
 
 
@@ -75,7 +92,10 @@ const StoreContextProvider = (props) => {
         token,
         setToken,
         loadCartData,
-        setCartItems
+        setCartItems,
+        loggedIn,
+        setloggedIn,
+        logout
     };
 
 

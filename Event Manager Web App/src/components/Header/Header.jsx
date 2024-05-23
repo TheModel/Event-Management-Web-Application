@@ -1,12 +1,14 @@
+import { useContext } from 'react';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
+import { StoreContext } from '../../Context/StoreContext';
 
 const Header = () => {
     const navigate = useNavigate();
-
+    const {loggedIn} = useContext(StoreContext)
     const openNewPage = () => {
         // Navigate to the /admin route
-        navigate('/add');
+        loggedIn?navigate('/add'):navigate('/signin');
     };
 
     return (

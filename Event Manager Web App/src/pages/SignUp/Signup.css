@@ -41,3 +41,8 @@
     width: 100%;
     margin-top: 20px;
   }
+
+  .nav-link{
+    margin-left: 5px;
+    color: steelblue;
+  }
