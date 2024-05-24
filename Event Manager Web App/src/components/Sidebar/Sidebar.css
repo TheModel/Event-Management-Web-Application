@@ -1,8 +1,8 @@
 /* Sidebar styles */
 .sidebar {
     width: 18%;
-    min-height: 50vh; /* Reduce the min-height */
-    max-height: 68vh; /* Add a max-height */
+    min-height: 50vh; /* Reduce the minimum-height */
+    max-height: 68vh; /* Add a maximum-height */
     border: 1.5px solid #A9A9A9;
     border-top: 0;
     float: left; /* Float the sidebar to the left */
