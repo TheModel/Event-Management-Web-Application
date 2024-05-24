@@ -78,7 +78,7 @@ const StoreContextProvider = (props) => {
         
         validateToken()
        
-    }, [])
+    }, [token])
 
 
     const contextValue = {

@@ -34,5 +34,4 @@ export const login = async (req,res) =>{
       });
 
     res.send(token);
-    res.json({token});
 }
