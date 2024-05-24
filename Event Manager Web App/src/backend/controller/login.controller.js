@@ -17,7 +17,7 @@ export const login = async (req,res) =>{
 
     const user = await User.findOne({email:email});
    
-    console.log(password , user)
+    console.log(user)
 
     if(!(email && (await bycrypt.compare(password,user.password)))){
         return res.status(404).json({ message: "Invalid credentials" });

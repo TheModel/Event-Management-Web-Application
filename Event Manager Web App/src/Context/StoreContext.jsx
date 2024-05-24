@@ -63,17 +63,17 @@ const StoreContextProvider = (props) => {
         //     }
         // }
         async function validateToken(){
-            
-             await axios.post('http://localhost:3000/api/auth/token',JSON.stringify({token:token}))
+             console.log(localStorage.getItem('token'))
+             setToken(localStorage.getItem('token'))
+             await axios.post('http://localhost:3000/api/auth/token',{token:token})
             .then((res)=>{
                 console.log(res.data);
-                const valid = res.data.valid
-                setToken(localStorage.getItem("token"))
+                const {valid} = res.data
                 setloggedIn(valid)
             }).catch((err)=>{
                 console.error(err)
             })
-            console.log(token)
+           
         }
         
         validateToken()

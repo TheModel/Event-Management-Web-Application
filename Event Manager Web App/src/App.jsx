@@ -11,7 +11,7 @@ import Dashboard_Add from './pages/Dashboard/Dashboard_Add'
 import ListDashBoard from './pages/ListDashBoard/ListDashBoard'
 import Login from './pages/Login/Login'
 import Signup from './pages/SignUp/Signup'
-
+import PrivateRoute from './components/ProtectedRoute/ProtectedRoute'
 const App = () => {
   
   const [showLogin,setShowLogin] = useState(false);
@@ -27,7 +27,9 @@ const App = () => {
         <Routes >
           <Route path='/' element={<Home />}/>
           <Route path='/cart' element={<Cart />}/>
-          <Route path='/add' element={<Dashboard_Add />}/>
+          <Route element={<PrivateRoute />}>
+            <Route path='/add' exact element={<Dashboard_Add />}/>
+          </Route>
           <Route path='/list' element={<ListDashBoard/>}/>
           <Route path='/signin' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>

@@ -6,7 +6,7 @@ import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
-  const {setloggedIn} = useContext(StoreContext)
+  const {setToken} = useContext(StoreContext)
   const [password,setPassword] = useState("")
   const [email,setEmail] = useState("")
   
@@ -20,10 +20,10 @@ const Login = () => {
     console.log(formData)
     if( formData.password !=="" && formData.email !==""){
     await axios.post('http://localhost:3000/api/auth/login',formData).then((res)=>{
-      console.log(res.status,res.data,res.headers)
       alert('Login Successfull: ' + formData.email)
-      localStorage.setItem('token',res.data.token)
-      setloggedIn(true)
+      localStorage.setItem('token',`${res.data}`)
+      const token = localStorage.getItem('token')
+      setToken(token)
       navigate('/')
     }).catch((err) => {
       console.log(err.message)

@@ -5,8 +5,7 @@ import jwt from 'jsonwebtoken'
 const router = express.Router()
 
 router.post('/token',(req,res) =>{
-  const token = req.body.token;
-
+  const {token} = req.body;
   if(token === null || token === undefined || token === ""){
       return res.status(401).send({valid:false})
   }
