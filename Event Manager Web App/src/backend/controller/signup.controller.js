@@ -9,6 +9,7 @@ const createSecretToken = (id) =>{
     });
 }
 
+
 export const createUser = async (req, res) => {
 
     
