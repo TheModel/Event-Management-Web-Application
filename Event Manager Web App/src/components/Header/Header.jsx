@@ -5,7 +5,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     const openNewPage = () => {
-        // Navigate to the /admin route
+        // Navigate to the /admin route //
         navigate('/add');
     };
 
