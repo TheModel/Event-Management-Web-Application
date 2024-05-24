@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const Addform = () => {
     
-    const url = "http://localhost:" // Enter Project Url after the (:)
+    const url = "http://localhost:" // Enter Project Url after the (:)//
     const [data, setData] = useState({
         name: "",
         description: "",
@@ -18,7 +18,7 @@ const Addform = () => {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-        console.log('Add button clicked'); // Log statement added here
+        console.log('Add button clicked'); // Log statement added here//
         const formData = new FormData();
         formData.append("name", data.name);
         formData.append("description", data.description);
