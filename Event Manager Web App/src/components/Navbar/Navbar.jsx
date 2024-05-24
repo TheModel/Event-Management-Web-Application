@@ -15,6 +15,7 @@ const Navbar = ({ setShowLogin }) => {
     setToken("");
     navigate('/')
   }
+  
 
   return (
     <div className='navbar'>
