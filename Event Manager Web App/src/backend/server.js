@@ -8,11 +8,11 @@ import cookieParser from 'cookie-parser'
 import { mongodb_connection,port } from "../../config.js";
 
 
-//Create Web Server Insatnce using express.js
+//Create Web Server Insatnce using express.js//
 const app = express();
-//const PORT = 4000;
+//const PORT = 4000;//
 
-//Middleware
+//Middleware//
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/events',EventRoutes)
@@ -27,10 +27,10 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials (cookies, etc.)
 
-  // Pass to next layer of middleware
+  // Pass to next layer of middleware//
   next();
 });
-//Connect to MongoDB
+//Connect to MongoDB//
 mongoose.connect(mongodb_connection)
 .then(()=>{
     console.log("Connected to Database");
