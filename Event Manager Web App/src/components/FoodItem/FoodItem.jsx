@@ -38,4 +38,5 @@ const FoodItem = ({ image, name, price, desc , id }) => {
     )
 }
 
+
 export default FoodItem
