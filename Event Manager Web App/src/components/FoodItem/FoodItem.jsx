@@ -1,17 +1,17 @@
-import React, { useContext, useState } from 'react'
+/* eslint-disable react/prop-types */
+import  { useContext } from 'react'
 import './FoodItem.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext';
 
-const FoodItem = ({ image, name, price, desc , id }) => {
+const FoodItem = ({ image, name, desc , id }) => {
 
-    const [itemCount, setItemCount] = useState(0);
-    const {cartItems,addToCart,removeFromCart,url} = useContext(StoreContext);
-
+    
+    const {cartItems,addToCart,removeFromCart,} = useContext(StoreContext);
     return (
         <div className='food-item'>
             <div className='food-item-img-container'>
-                <img className='food-item-image' src={url+"/images/"+image} alt="" />
+                <img className='food-item-image' src={image} alt="" />
                 {!cartItems[id]
                 ? <img 
                     className='add' 

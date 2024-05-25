@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import { food_list, menu_list } from "../assets/assets";
 import axios from "axios";
@@ -6,7 +7,7 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
 
     const url = "http://localhost:3000"
-    const [food_list, setFoodList] = useState([]);
+    const [event_list, setEventList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
     const [loggedIn,setloggedIn] = useState(false)
@@ -41,9 +42,11 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
-    const fetchFoodList = async () => {
-        const response = await axios.get(url + "/api/food/list");
-        setFoodList(response.data.data)
+    const fetchEventList = async () => {
+        const response = await axios.get(url + "/api/events/");
+        const data = response.data;
+        console.log(data);
+        setEventList(data)
     }
 
     const loadCartData = async (token) => {
@@ -55,13 +58,13 @@ const StoreContextProvider = (props) => {
         await axios.get('http://localhost:3000/api/auth/logout')
     }
     useEffect(() => {
-        // async function loadData() {
-        //    // await fetchFoodList();
-        //     if (localStorage.getItem("token")) {
-        //         
-        //         //await loadCartData({ token: localStorage.getItem("token") })
-        //     }
-        // }
+        async function loadData() {
+            await fetchEventList();
+            // if (localStorage.getItem("token")) {
+                
+            //     //await loadCartData({ token: localStorage.getItem("token") })
+            // }
+        }
         async function validateToken(){
              console.log(localStorage.getItem('token'))
              setToken(localStorage.getItem('token'))
@@ -75,15 +78,15 @@ const StoreContextProvider = (props) => {
             })
            
         }
-        
-        validateToken()
+        loadData();
+        validateToken();
        
     }, [token])
 
 
     const contextValue = {
         url,
-        food_list,
+        event_list,
         menu_list,
         cartItems,
         addToCart,
