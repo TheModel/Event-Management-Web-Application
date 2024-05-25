@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState,useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
+import { toast } from 'react-toastify';
 import './Login.css';
 
 const Login = () => {
@@ -20,14 +21,15 @@ const Login = () => {
     console.log(formData)
     if( formData.password !=="" && formData.email !==""){
     await axios.post('http://localhost:3000/api/auth/login',formData).then((res)=>{
-      alert('Login Successfull: ' + formData.email)
+      toast.success('Login Successfull: ' + formData.email)
       localStorage.setItem('token',`${res.data}`)
       const token = localStorage.getItem('token')
       setToken(token)
       navigate('/')
     }).catch((err) => {
-      console.log(err.message)
-      alert("Could not log in , please check your credentials")
+      console.log(err.message)   
+      toast.error('Failed to Login: ' + err.message)
+     
     })
   }
   }

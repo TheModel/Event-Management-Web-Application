@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import  { useContext } from 'react'
-import './FoodItem.css'
+import './EventItem.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext';
 
-const FoodItem = ({ image, name, desc , id }) => {
+const EventItem = ({ image, name, desc , id }) => {
 
     
     const {cartItems,addToCart,removeFromCart,} = useContext(StoreContext);
@@ -38,4 +38,4 @@ const FoodItem = ({ image, name, desc , id }) => {
     )
 }
 
-export default FoodItem
+export default EventItem

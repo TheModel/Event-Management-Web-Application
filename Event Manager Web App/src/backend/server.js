@@ -6,7 +6,7 @@ import { router as EventRoutes } from "./routes/event.routes.js";
 import { router as AuthRoutes } from "./routes/auth.routes.js";
 import cookieParser from 'cookie-parser'
 import { mongodb_connection,port } from "../../config.js";
-import jwt from 'jsonwebtoken'
+//import jwt from 'jsonwebtoken'
 
 //Create Web Server Insatnce using express.js
 const app = express();

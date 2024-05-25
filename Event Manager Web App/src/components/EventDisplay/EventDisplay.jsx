@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import  { useContext } from 'react'
-import './FoodDisplay.css'
-import FoodItem from '../FoodItem/FoodItem'
+import './EventDisplay.css'
+import EventItem from '../EventItem/EventItem'
 import { StoreContext } from '../../Context/StoreContext'
 
-const FoodDisplay = ({category}) => {
+const EventDisplay = ({category}) => {
 
   const {event_list} = useContext(StoreContext);
 
@@ -14,7 +14,7 @@ const FoodDisplay = ({category}) => {
       <div className='food-display-list'>
         {event_list.map((item)=>{
           if (category==="All" || category===item.category) {
-            return <FoodItem key={item._id} image={item.img} name={item.title} desc={item.description} price={item.price} id={item._id}/>
+            return <EventItem key={item._id} image={item.img} name={item.title} desc={item.description} price={item.price} id={item._id}/>
           }
         })}
       </div>
@@ -22,4 +22,4 @@ const FoodDisplay = ({category}) => {
   )
 }
 
-export default FoodDisplay
+export default EventDisplay

@@ -9,7 +9,6 @@ const router = express.Router();
 router.get('/',async (req,res) =>{
     try{
         const events = await Event.find();
-        console.log('Events retrieved successfuly')
         res.status(200).send(events)
     }catch(error){
         res.status(500).json({message: error.message})
