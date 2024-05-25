@@ -14,25 +14,25 @@ const app = express();
 
 //Middleware
 
-const validateToken = (req,res,next) =>{
+// const validateToken = (req,res,next) =>{
 
-    const token = req.token;
+//     const token = req.token;
 
-    if(token == null){
-        return res.sendStatus(401).send({message:'User not logged in'})
-    }
-    jwt.verify(token,"Secret key",(err,user)=>{
-        if(err){
-            return res.sendStatus(403).send({message:"Invalid Token"})
-        }
-        req.user = user;
-        next();
-    }) 
-}
+//     if(token == null){
+//         return res.sendStatus(401).send({message:'User not logged in'})
+//     }
+//     jwt.verify(token,"Secret key",(err,user)=>{
+//         if(err){
+//             return res.sendStatus(403).send({message:"Invalid Token"})
+//         }
+//         req.user = user;
+//         next();
+//     }) 
+// }
 app.use(express.json())
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/api/events',validateToken,EventRoutes)
+app.use('/api/events',EventRoutes)
 app.use('/api/auth', AuthRoutes)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());

@@ -10,7 +10,7 @@ router.get('/',async (req,res) =>{
     try{
         const events = await Event.find();
         console.log('Events retrieved successfuly')
-        res.status(200).json(events)
+        res.status(200).send(events)
     }catch(error){
         res.status(500).json({message: error.message})
     }
@@ -19,10 +19,13 @@ router.get('/',async (req,res) =>{
 //Api Call to create new event
 
 router.post('/',async (req,res)=>{
+    const {title,description,category,img,email} = req.body;
     const event = new Event({
-        title: req.body.title,
-        date: req.body.date,
-        reminder: req.body.reminder || false,
+        title:title,
+        description:description,
+        category:category,
+        img:img,
+        email: email || "test@email.com"
     });
 
     try {

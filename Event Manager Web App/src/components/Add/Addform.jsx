@@ -5,41 +5,52 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Addform = () => {
-    
-    const url = "http://localhost:" // Enter Project Url after the (:)
+    const url = "http://localhost:3000/api/events/"
     const [data, setData] = useState({
-        name: "",
+        title: "",
         description: "",
-        price: "",
-        category: "Sports"
+        img: "",
+        category: "Sports",
+        email:""
     });
 
     const [image, setImage] = useState(false);
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-        console.log('Add button clicked'); // Log statement added here
-        const formData = new FormData();
-        formData.append("name", data.name);
-        formData.append("description", data.description);
-        formData.append("price", Number(data.price));
-        formData.append("category", data.category);
-        formData.append("image", image);
-        const response = await axios.post(`${url}/api/food/add`, formData);
-        if (response.data.success) {
-            toast.success("Event Added Successfully")
-            setData({
-                name: "",
-                description: "",
-                price: "",
-                category: "Sports"
-            })
-            setImage(false);
-            window.location.href = 'http://localhost:5174/'
-        } else {
-            toast.error(response.data.message)
-        }
+
+        const imageBase64 = await convertToBase64(image)
+
+        const formData = {
+            title: data.title,
+            description:data.description,
+            img:imageBase64,
+            category:data.category,
+            email:data.email
+          }
+        console.log(formData)
+        await axios.post(url,formData).then(()=>{
+            toast.success('Event Created Successfully')
+        }).catch((err)=>{
+            toast.error('Failed to create event: ' + err.message)
+            console.error(err)
+        })
+        
     }
+
+    const convertToBase64 = (file) =>{
+        return new Promise((resolve,reject)=>{
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () =>{
+                resolve(fileReader.result);
+            };
+            fileReader.onerror =(error) =>{
+                reject(error)
+            }
+        })
+    }
+
 
     const onChangeHandler = (event) => {
         const name = event.target.name;
@@ -55,11 +66,11 @@ const Addform = () => {
                     <label htmlFor="image">
                         <img src={!image ? assets.upload_area : URL.createObjectURL(image)} alt="" />
                     </label>
-                    <input onChange={(e) => { setImage(e.target.files[0]) }} type="file" id="image" hidden required />
+                    <input onChange={(e) => { setImage(e.target.files[0]) }} type="file" id="image" name='img' hidden required />
                 </div>
                 <div className='add-product-name flex-col'>
                     <p>Event name</p>
-                    <input name='name' onChange={(e) =>{onChangeHandler(e)}} value={data.name} type="text" placeholder='Type here' required />
+                    <input name='title' onChange={(e) =>{onChangeHandler(e)}} value={data.name} type="text" placeholder='Type here' required />
                 </div>
                 <div className='add-product-description flex-col'>
                     <p>Event description</p>
