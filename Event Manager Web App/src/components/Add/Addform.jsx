@@ -31,6 +31,7 @@ const Addform = () => {
         console.log(formData)
         await axios.post(url,formData).then(()=>{
             toast.success('Event Created Successfully')
+            window.location.reload()
         }).catch((err)=>{
             toast.error('Failed to create event: ' + err.message)
             console.error(err)

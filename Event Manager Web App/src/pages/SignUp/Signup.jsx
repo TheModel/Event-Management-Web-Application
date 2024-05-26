@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Signup.css';
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 const Signup = () => {
   const [name,setName] = useState("")
@@ -19,8 +20,11 @@ const Signup = () => {
     if(formData.username !== "" && formData.password !=="" && formData.email !==""){
     await axios.post('http://localhost:3000/api/auth/signup',formData).then((res)=>{
       console.log(res.status,res.data,res.headers)
-      alert('Account Successfully Created')
-    }).catch((err) => console.log(err.message))
+      toast.success('Account Successfully Created')
+    }).catch((err) => {
+      console.log(err.message);
+      toast.error("Error: " + err.message)
+    })
   }
   }
   return (
