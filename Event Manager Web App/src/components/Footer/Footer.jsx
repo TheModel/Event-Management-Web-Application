@@ -27,8 +27,8 @@ const Footer = () => {
             <h2>COMPANY</h2>
             <ul>
                 <li>Home</li>
-                <li>About us</li>
-                <li>Privacy policy</li>
+                <li>About Us</li>
+                <li>Privacy Policy</li>
             </ul>
         </div>
         <div className="footer-content-right">
@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
       </div>
       <hr />
-      <p className="footer-copyright">Copyright 2024 © Eventify.com - All Right Reserved.</p>
+      <p className="footer-copyright">Copyright 2024 © Eventify.com - All Rights Reserved.</p>
     </div>
   )
 }
