@@ -16,8 +16,6 @@ const Navbar = ({ setShowLogin }) => {
     navigate('/')
   }
 
-  
-
   return (
     <div className='navbar'>
       <Link to='/'><img className='logo' src={assets.logo} alt="" /></Link>
