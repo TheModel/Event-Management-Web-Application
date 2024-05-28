@@ -11,7 +11,7 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
     const [loggedIn,setloggedIn] = useState(false)
-
+    const [user,setUser] = useState("")
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
             setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -45,7 +45,6 @@ const StoreContextProvider = (props) => {
     const fetchEventList = async () => {
         const response = await axios.get(url + "/api/events/");
         const data = response.data;
-        console.log(data);
         setEventList(data)
     }
 
@@ -60,6 +59,8 @@ const StoreContextProvider = (props) => {
     useEffect(() => {
         async function loadData() {
             await fetchEventList();
+            setUser(localStorage.getItem('user'))
+            console.log(user)
             // if (localStorage.getItem("token")) {
                 
             //     //await loadCartData({ token: localStorage.getItem("token") })
@@ -81,7 +82,7 @@ const StoreContextProvider = (props) => {
         loadData();
         validateToken();
        
-    }, [token])
+    }, [token,user])
 
 
     const contextValue = {
@@ -98,7 +99,9 @@ const StoreContextProvider = (props) => {
         setCartItems,
         loggedIn,
         setloggedIn,
-        logout
+        logout,
+        user,
+        setUser
     };
 
 

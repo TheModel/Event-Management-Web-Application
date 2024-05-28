@@ -24,7 +24,7 @@ router.post('/',async (req,res)=>{
         description:description,
         category:category,
         img:img,
-        email: email || "test@email.com"
+        email: email 
     });
 
     try {

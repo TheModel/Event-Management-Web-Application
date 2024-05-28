@@ -7,7 +7,7 @@ import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
-  const {setToken} = useContext(StoreContext)
+  const {setToken,setUser} = useContext(StoreContext)
   const [password,setPassword] = useState("")
   const [email,setEmail] = useState("")
   
@@ -23,8 +23,11 @@ const Login = () => {
     await axios.post('http://localhost:3000/api/auth/login',formData).then((res)=>{
       toast.success('Login Successfull: ' + formData.email)
       localStorage.setItem('token',`${res.data}`)
+      localStorage.setItem('user',formData.email)
       const token = localStorage.getItem('token')
+      const user = localStorage.getItem('user')
       setToken(token)
+      setUser(user);
       navigate('/')
     }).catch((err) => {
       console.log(err.message)   

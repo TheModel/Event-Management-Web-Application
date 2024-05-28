@@ -12,6 +12,7 @@ const Navbar = ({ setShowLogin }) => {
   const navigate = useNavigate();
   const logOut = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user")
     logout();
     setToken("");
     navigate('/');
