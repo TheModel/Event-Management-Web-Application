@@ -4,6 +4,7 @@ import cors from 'cors'
 import bodyParser from "body-parser";
 import { router as EventRoutes } from "./routes/event.routes.js";
 import { router as AuthRoutes } from "./routes/auth.routes.js";
+import {router as CartRoutes} from "./routes/cart.routes.js"
 import cookieParser from 'cookie-parser'
 import { mongodb_connection,port } from "../../config.js";
 //import jwt from 'jsonwebtoken'
@@ -34,6 +35,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/events',EventRoutes)
 app.use('/api/auth', AuthRoutes)
+app.use('/api/cart',CartRoutes)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 

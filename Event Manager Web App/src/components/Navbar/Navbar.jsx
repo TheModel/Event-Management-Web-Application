@@ -6,7 +6,11 @@ import { StoreContext } from '../../Context/StoreContext'
 
 // eslint-disable-next-line react/prop-types
 const Navbar = ({ setShowLogin }) => {
-
+  
+    const openNewPage = () => {
+        // Navigate to the /admin route
+        loggedIn?navigate('/cart'):navigate('/signin');
+    };
   const [menu, setMenu] = useState("home");
   const { getTotalCartAmount,setToken,loggedIn,logout } = useContext(StoreContext);
   const navigate = useNavigate();
@@ -29,10 +33,8 @@ const Navbar = ({ setShowLogin }) => {
         <a href='#footer' onClick={() => setMenu("contact")} className={`${menu === "contact" ? "active" : ""}`}>Contact Us</a>
       </ul>
       <div className="navbar-right">
-        <Link to='/cart' className='navbar-search-icon'>
-          <img src={assets.basket_icon} alt="" />
+          <img onClick={openNewPage} style={{cursor:'pointer'}} src={assets.basket_icon} alt="" />
           <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
-        </Link>
         {loggedIn ?  <button onClick={logOut}>Log out</button>
           :<button onClick={() => setShowLogin(true)}>sign in</button>
           

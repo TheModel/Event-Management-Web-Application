@@ -4,7 +4,7 @@ import './EventItem.css'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext';
 
-const EventItem = ({ image, name, desc , id }) => {
+const EventItem = ({ image, name, desc , event }) => {
 
     
     const {cartItems,addToCart,removeFromCart,} = useContext(StoreContext);
@@ -15,11 +15,12 @@ const EventItem = ({ image, name, desc , id }) => {
             </div>
             <div className="food-item-info">
                 <div className="food-item-name-rating">
-                    <p>{name}</p> <button className = 'modified-add-btn'><img  
-                                        onClick={() => addToCart()} 
-                                        src = {assets.add_icon_green} 
-                                        title="Add to eventList"/>
-                                        </button>
+                    <p>{name}</p>
+                     <button className = 'modified-add-btn'><img  
+                        onClick={() => addToCart(event)} 
+                        src = {assets.add_icon_green} 
+                        title="Add to eventList"/>
+                    </button>
                 </div>
                 <p className="food-item-desc">{desc}</p>
             </div>

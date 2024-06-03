@@ -12,15 +12,18 @@ const StoreContextProvider = (props) => {
     const [token, setToken] = useState("")
     const [loggedIn,setloggedIn] = useState(false)
     const [user,setUser] = useState("")
-    const addToCart = async (itemId) => {
-        if (!cartItems[itemId]) {
-            setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
-        }
-        else {
-            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-        }
+    const addToCart = async (event) => {
+        console.log(event)
         if (token) {
-            await axios.post(url + "/api/cart/add", { itemId }, { headers: { token } });
+            try {
+                await axios.post(url + "/api/cart/events", {email:user, event:event })
+                console.log("Successfully added to cart")
+                
+            } catch (error) {
+                console.error("Error Couldn't add event to cart:", error)
+            }
+            
+            
         }
     }
 
@@ -46,11 +49,17 @@ const StoreContextProvider = (props) => {
         const response = await axios.get(url + "/api/events/");
         const data = response.data;
         setEventList(data)
+        console.log(event_list)
     }
 
-    const loadCartData = async (token) => {
-        const response = await axios.post(url + "/api/cart/get", {}, { headers: token });
-        setCartItems(response.data.cartData);
+    
+
+    const loadCartData = async (email) => {
+        await axios.get(url + `/api/cart/events/` + email).then((res)=>{
+            setCartItems(res.data.cart_list[0].events);
+            console.log(res.data.cart_list[0].events)
+        });
+        
     }
 
     const logout =  async () =>{
@@ -61,10 +70,11 @@ const StoreContextProvider = (props) => {
             await fetchEventList();
             setUser(localStorage.getItem('user'))
             console.log(user)
-            // if (localStorage.getItem("token")) {
+             if (user) {
                 
-            //     //await loadCartData({ token: localStorage.getItem("token") })
-            // }
+                 await loadCartData(user)
+             }
+             
         }
         async function validateToken(){
              console.log(localStorage.getItem('token'))
