@@ -53,7 +53,7 @@ const LoginPopup = ({ setShowLogin }) => {
                 <div className="login-popup-inputs">
                     {currState === "Sign Up" ? <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your Name' required /> : <></>}
                     <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your Email' />
-                    <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Password' required />
+                    <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='PassWord' required />
                 </div>
                 <button>{currState === "Login" ? "Login" : "Create Account"}</button>
                 <div className="login-popup-condition">
@@ -61,8 +61,8 @@ const LoginPopup = ({ setShowLogin }) => {
                     <p>By continuing, I agree to the terms of use & privacy policy.</p>
                 </div>
                 {currState === "Login"
-                    ? <p>Create a new account ? <span onClick={() => setCurrState('Sign Up')}>Click Here</span></p>
-                    : <p>Already have an account ? <span onClick={() => setCurrState('Login')}>Login Here</span></p>
+                    ? <p>Create a new account ? <span onClick={() => setCurrState('Sign Up')}>Click Here.</span></p>
+                    : <p>Already have an account ? <span onClick={() => setCurrState('Login')}>Login Here.</span></p>
                 }
             </form>
         </div>
