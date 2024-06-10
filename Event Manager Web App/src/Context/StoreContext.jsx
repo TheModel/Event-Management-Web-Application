@@ -2,6 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import { food_list, menu_list } from "../assets/assets";
 import axios from "axios";
+import { toast } from "react-toastify";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
@@ -17,9 +18,11 @@ const StoreContextProvider = (props) => {
         if (token) {
             try {
                 await axios.post(url + "/api/cart/events", {email:user, event:event })
+                toast.success("Successfully added event to cart")
                 console.log("Successfully added to cart")
                 
             } catch (error) {
+                toast.error('Failed to add event to cart');
                 console.error("Error Couldn't add event to cart:", error)
             }
             
