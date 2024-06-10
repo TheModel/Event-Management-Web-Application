@@ -130,3 +130,7 @@
     margin-top: 35px; /* Adjust the top margin of the button */
     border-radius: 15px;
 }
+
+.sm-text{
+    font-size:smaller;
+}

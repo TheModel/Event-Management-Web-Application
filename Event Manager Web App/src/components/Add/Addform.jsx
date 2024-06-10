@@ -7,7 +7,7 @@ import  { useContext } from 'react'
 import { StoreContext } from '../../Context/StoreContext'
 import { useNavigate } from 'react-router-dom';
 const Addform = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const url = "http://localhost:3000/api/events/"
     const {user} = useContext(StoreContext);
     const [data, setData] = useState({
@@ -67,10 +67,13 @@ const Addform = () => {
         <div className='add'>
             <form className='flex-col' onSubmit={(e) =>{onSubmitHandler(e)}}>
                 <div className='add-img-upload flex-col'>
-                    <p>Upload image</p>
+                    <p>Upload image  </p>
+                    <p className='sm-text'>(Max size:100kb)</p>
                     <label htmlFor="image">
                         <img src={!image ? assets.upload_area : URL.createObjectURL(image)} alt="" />
+                       
                     </label>
+                    
                     <input onChange={(e) => { setImage(e.target.files[0]) }} type="file" id="image" name='img' hidden required />
                 </div>
                 <div className='add-product-name flex-col'>
