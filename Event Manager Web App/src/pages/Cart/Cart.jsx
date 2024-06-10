@@ -17,9 +17,11 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {cartItems && cartItems.map((item)=>{
+
+        {
+          cartItems && cartItems.length > 0 ? cartItems.map((item)=>
           
-            return (
+             (
               <div key={item._id} className="list-table-format title">
                 <img src={item.img}/>
                 <span>{item.title}</span>
@@ -30,7 +32,10 @@ const Cart = () => {
               
             ) 
           
-        })}
+        ) : (cartItems && cartItems.length == 0 ?
+        <p>Cart item Empty</p>
+        : (<p>Loading...</p>))
+        }
         
        
       </div>

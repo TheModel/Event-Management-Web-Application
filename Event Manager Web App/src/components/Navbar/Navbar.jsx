@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../Context/StoreContext'
 
 // eslint-disable-next-line react/prop-types
-const Navbar = ({ setShowLogin }) => {
+const Navbar = () => {
   
     const openNewPage = () => {
         // Navigate to the /admin route
@@ -36,7 +36,7 @@ const Navbar = ({ setShowLogin }) => {
           <img onClick={openNewPage} style={{cursor:'pointer'}} src={assets.basket_icon} alt="" />
           <div className={getTotalCartAmount() > 0 ? "dot" : ""}></div>
         {loggedIn ?  <button onClick={logOut}>Log out</button>
-          :<button onClick={() => setShowLogin(true)}>sign in</button>
+          :<button onClick={() => navigate('/signin')}>sign in</button>
           
         }
 

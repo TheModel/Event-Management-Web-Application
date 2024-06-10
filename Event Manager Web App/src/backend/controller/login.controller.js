@@ -19,19 +19,25 @@ export const login = async (req,res) =>{
    
     console.log(user)
 
-    if(!(email && (await bycrypt.compare(password,user.password)))){
-        return res.status(404).json({ message: "Invalid credentials" });
+    try{
+        if(!(email && (await bycrypt.compare(password,user.password)))){
+            return res.status(404).json({ message: "Invalid credentials" });
+            
+        }
+        const token = createSecretToken(user._id)
+    
+        res.cookie("token", token, {
+            domain: "http://localhost:3000/", // Set your domain here
+            path: "/", // Cookie is accessible from all paths
+            expires: new Date(Date.now() + 86400000), // Cookie expires in 1 day
+            secure: true, // Cookie will only be sent over HTTPS
+            httpOnly: true, // Cookie cannot be accessed via client-side scripts
+            sameSite: "None",
+          });
+    
+        res.send(token);
+    }catch(error){
+        console.error(error)
     }
-    const token = createSecretToken(user._id)
-
-    res.cookie("token", token, {
-        domain: "http://localhost:3000/", // Set your domain here
-        path: "/", // Cookie is accessible from all paths
-        expires: new Date(Date.now() + 86400000), // Cookie expires in 1 day
-        secure: true, // Cookie will only be sent over HTTPS
-        httpOnly: true, // Cookie cannot be accessed via client-side scripts
-        sameSite: "None",
-      });
-
-    res.send(token);
+    
 }
