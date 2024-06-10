@@ -19,3 +19,17 @@
 .app-download-platforms img:hover{
     transform: scale(1.05);
  }
+
+ .text-about{
+    font-size: 18px;
+    line-height: 1.8rem;
+    margin-top: 8px;
+    margin-bottom: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .h2-about{
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 8px;
+ }
