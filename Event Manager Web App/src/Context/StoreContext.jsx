@@ -17,15 +17,22 @@ const StoreContextProvider = (props) => {
     const addToCart = async (event) => {
         console.log(event)
         if (token) {
-            try {
-                await axios.post(url + "/api/cart/events", {email:user, event:event })
-                toast.success("Successfully added event to cart")
-                console.log("Successfully added to cart")
-                
-            } catch (error) {
-                toast.error('Failed to add event to cart');
-                console.error("Error Couldn't add event to cart:", error)
-            }
+            
+            try{
+                await axios.post(url + "/api/cart/events", {email:user, event:event }).then(()=>{
+                    toast.success("Successfully added event to cart");
+                   const  new_cart = cartItems;
+                   new_cart.push(event);
+                   setCartItems(new_cart)
+                })
+                    
+                    
+                    console.log("Successfully added to cart");
+                    
+            }catch(error){
+                    toast.error('Failed to add event to cart');
+                    console.error("Error Couldn't add event to cart:", error)
+                }
             
             
         }
@@ -34,12 +41,13 @@ const StoreContextProvider = (props) => {
     
       
     const removeFromCart = async (event_title) => {
-        //setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
-
         
         if (token) {
             await axios.delete(url + "/api/cart/events/" + cartId + "/" + event_title).then(()=>{
                 toast.success('Event Deleted from Cart!')
+                let new_cart = cartItems.filter((item)=>{return item.title !== event_title});
+                setCartItems(new_cart);
+
             })
             .catch(
                 (error)=>{
@@ -72,6 +80,7 @@ const StoreContextProvider = (props) => {
         
         await axios.delete( url + '/api/events/' + event_id).then(()=>{
             toast.success('Event Deleted!')
+            fetchEventList();
         })
         .catch(
             (error)=>{
@@ -83,15 +92,18 @@ const StoreContextProvider = (props) => {
     
 
     const loadCartData = async (email) => {
-        await axios.get(url + `/api/cart/events/` + email).then((res)=>{
-            setCartId(res.data.cart_list[0]._id);
-            setCartItems(res.data.cart_list[0].events);
-            console.log(cartId);
-            console.log(res.data.cart_list[0].events)
-        }).catch((err)=>{
+        const res  = await axios.get(url + `/api/cart/events/` + email)
+        const cartlist = res.data[0];
+        console.log(cartlist)
+        
+        try{
+            if(cartlist.events !== undefined)
+            setCartId(cartlist._id);
+            setCartItems(cartlist.events);
+           
+        }catch(err){
             console.log(err.message)
-            setCartItems([])
-        });
+        }
         
     }
 
@@ -106,7 +118,6 @@ const StoreContextProvider = (props) => {
             setUser(localStorage.getItem('user'))
             console.log(user)
              if (user) {
-                
                  await loadCartData(user)
              }
              
@@ -127,6 +138,7 @@ const StoreContextProvider = (props) => {
         loadData();
         validateToken();
        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token,user])
 
 
@@ -141,6 +153,7 @@ const StoreContextProvider = (props) => {
         getTotalCartAmount,
         token,
         setToken,
+        fetchEventList,
         loadCartData,
         setCartItems,
         loggedIn,

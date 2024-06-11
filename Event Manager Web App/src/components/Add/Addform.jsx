@@ -5,11 +5,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import  { useContext } from 'react'
 import { StoreContext } from '../../Context/StoreContext'
-import { useNavigate } from 'react-router-dom';
+
 const Addform = () => {
     // const navigate = useNavigate();
     const url = "http://localhost:3000/api/events/"
-    const {user} = useContext(StoreContext);
+    const {user,fetchEventList} = useContext(StoreContext);
     const [data, setData] = useState({
         title: "",
         description: "",
@@ -35,7 +35,7 @@ const Addform = () => {
         console.log(formData)
         await axios.post(url,formData).then(()=>{
             toast.success('Event Created Successfully')
-            
+            fetchEventList();
         }).catch((err)=>{
             toast.error('Failed to create event: ' + err.message)
             console.error(err)

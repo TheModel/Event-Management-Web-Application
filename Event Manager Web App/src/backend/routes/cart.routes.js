@@ -18,7 +18,7 @@ router.post('/events', async (req, res) => {
       cart.events.push(event);
       cart.total += 1;
   
-      await cart.save();
+       cart.save();
   
       res.status(201).json({ message: 'Event added to cart successfully', cart });
     } catch (error) {
@@ -29,12 +29,12 @@ router.get('/events/:email',async(req,res)=>{
     const email = req.params.email;
     //console.log(email);
     try{
-        let cart_list  =  await Cart.find({email:email})
+        const cart_list  =  await Cart.find({email:email})
 
         if(cart_list == null){
           return res.status(401).json({ message: "Cart Empty" });
         }
-        res.status(201).json({ message: 'User Cart Items', cart_list });
+        res.status(201).send(cart_list);
     }catch(error){
         res.status(500).json({ message: 'Server error', error });
     }

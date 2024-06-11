@@ -7,7 +7,7 @@ import { StoreContext } from '../../Context/StoreContext';
 const EventItem = ({ image, name, desc , event }) => {
 
     
-    const {cartItems,addToCart,removeFromCart,} = useContext(StoreContext);
+    const {addToCart} = useContext(StoreContext);
     return (
         <div className='food-item'>
             <div className='food-item-img-container'>
