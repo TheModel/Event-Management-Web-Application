@@ -59,7 +59,7 @@ const Addform = () => {
                 </div>
                 <div className='add-product-name flex-col'>
                     <p>Event name</p>
-                    <input name='name' onChange={(e) =>{onChangeHandler(e)}} value={data.name} type="text" placeholder='Type here' required />
+                    <input name='name' onChange={(e) =>{onChangeHandler(e)}} value={data.name} type="text" placeholder='Type Event Name Here' required />
                 </div>
                 <div className='add-product-description flex-col'>
                     <p>Event description</p>
@@ -79,7 +79,7 @@ const Addform = () => {
                             <option value="Meeting">Meeting</option>
                         </select>
                     </div>
-                    <button type='submit' className='add-btn' >ADD</button>
+                    <button type='submit' className='add-btn' >ADD EVENT</button>
                 </div>
             </form>
         </div>
