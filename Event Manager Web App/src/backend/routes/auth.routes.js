@@ -6,18 +6,26 @@ const router = express.Router()
 
 router.post('/token',(req,res) =>{
   const {token} = req.body;
-  if(token === null || token === undefined || token === ""){
-      return res.status(401).send({valid:false})
-  }
-  jwt.verify(token,"Secret key",(err)=>{
-      if(err){
-        return  res.status(403).send({valid:false})
-      }else{
-        return res.status(200).send({valid:true})
-      }
 
-      
-  }) 
+  try{
+    if(token === null || token === undefined || token === ""){
+      return res.status(401).json({valid:false})
+    }
+
+  jwt.verify(token,"Secret key",(err)=>{
+    if(err){
+      return  res.status(403).json({valid:false})
+    }else{
+      return res.status(200).json({valid:true})
+    }
+
+    
+}) 
+  }catch(error){
+    console.error(error)
+  }
+  
+  
 })
 router.post('/signup',createUser);
 router.post('/login',login);

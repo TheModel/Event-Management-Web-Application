@@ -30,6 +30,10 @@ router.get('/events/:email',async(req,res)=>{
     //console.log(email);
     try{
         let cart_list  =  await Cart.find({email:email})
+
+        if(cart_list == null){
+          return res.status(401).json({ message: "Cart Empty" });
+        }
         res.status(201).json({ message: 'User Cart Items', cart_list });
     }catch(error){
         res.status(500).json({ message: 'Server error', error });

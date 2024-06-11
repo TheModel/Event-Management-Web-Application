@@ -61,6 +61,9 @@ const StoreContextProvider = (props) => {
         await axios.get(url + `/api/cart/events/` + email).then((res)=>{
             setCartItems(res.data.cart_list[0].events);
             console.log(res.data.cart_list[0].events)
+        }).catch((err)=>{
+            console.log(err.message)
+            setCartItems([])
         });
         
     }
