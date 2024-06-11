@@ -27,7 +27,7 @@ const Cart = () => {
                 <span>{item.title}</span>
                 <span>{item.description}</span>
                 <span>{item.category}</span>
-                <span className='cart-btn'>X</span>
+                <span className='cart-btn' onClick={()=>{removeFromCart(item.title)}}>X</span>
               </div>
               
             ) 

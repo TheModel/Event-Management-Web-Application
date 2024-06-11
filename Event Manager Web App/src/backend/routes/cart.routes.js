@@ -42,24 +42,23 @@ router.get('/events/:email',async(req,res)=>{
 
 })
   // Delete an event from the cart
-router.delete('/cart/events/:eventId', async (req, res) => {
-    const { eventId } = req.params;
-  
-    try {
-      let cart = await Cart.findOne();
-      if (!cart) {
-        return res.status(404).json({ message: 'Cart not found' });
-      }
-  
-      cart.events.id(eventId).remove();
-      cart.total -= 1;
-  
-      await cart.save();
-  
-      res.status(200).json({ message: 'Event removed from cart successfully', cart });
-    } catch (error) {
-      res.status(500).json({ message: 'Server error', error });
+router.delete('/events/:eventId/:title', async (req, res) => {
+  const { title, eventId } = req.params;
+
+  try {
+    const cart = await Cart.findByIdAndUpdate(eventId, {
+      $pull: { events: { title: title } },
+    });
+
+    if (!cart) {
+      return res.status(404).json({ message: 'Cart not found' });
     }
+
+    res.json({ message: 'Event deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
   });
 
   export{

@@ -10,6 +10,7 @@ const StoreContextProvider = (props) => {
     const url = "http://localhost:3000"
     const [event_list, setEventList] = useState([]);
     const [cartItems, setCartItems] = useState({});
+    const [cartId,setCartId] = useState(0);
     const [token, setToken] = useState("")
     const [loggedIn,setloggedIn] = useState(false)
     const [user,setUser] = useState("")
@@ -30,10 +31,22 @@ const StoreContextProvider = (props) => {
         }
     }
 
-    const removeFromCart = async (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+    
+      
+    const removeFromCart = async (event_title) => {
+        //setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+
+        
         if (token) {
-            await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } });
+            await axios.delete(url + "/api/cart/events/" + cartId + "/" + event_title).then(()=>{
+                toast.success('Event Deleted from Cart!')
+            })
+            .catch(
+                (error)=>{
+                    toast.error('Could not delete Event from Cart!')
+                    console.error(error.message)
+                })
+            
         }
     }
 
@@ -71,7 +84,9 @@ const StoreContextProvider = (props) => {
 
     const loadCartData = async (email) => {
         await axios.get(url + `/api/cart/events/` + email).then((res)=>{
+            setCartId(res.data.cart_list[0]._id);
             setCartItems(res.data.cart_list[0].events);
+            console.log(cartId);
             console.log(res.data.cart_list[0].events)
         }).catch((err)=>{
             console.log(err.message)
