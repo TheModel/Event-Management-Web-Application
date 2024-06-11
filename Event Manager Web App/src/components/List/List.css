@@ -32,3 +32,13 @@
         display: none;
     }
 }
+
+.btn-delete{
+    padding: 3px;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    border-color: transparent;
+}

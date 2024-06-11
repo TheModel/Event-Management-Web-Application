@@ -3,7 +3,7 @@ import  { useContext } from 'react'
 import {StoreContext} from '../../Context/StoreContext'
 const List = () => {
 
-  const {event_list,user} = useContext(StoreContext);
+  const {event_list,user,deleteEventlist} = useContext(StoreContext);
 
   return (
     <div className='list add flex-col'>
@@ -24,6 +24,7 @@ const List = () => {
                 <span>{item.title}</span>
                 <span>{item.description}</span>
                 <span>{item.category}</span>
+                <button className='btn-delete' onClick={()=>{deleteEventlist(item._id)}}>delete</button>
               </div>
               
             ) 

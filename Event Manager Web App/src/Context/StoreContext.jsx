@@ -55,6 +55,18 @@ const StoreContextProvider = (props) => {
         console.log(event_list)
     }
 
+    const deleteEventlist = async (event_id)=>{
+        
+        await axios.delete( url + '/api/events/' + event_id).then(()=>{
+            toast.success('Event Deleted!')
+        })
+        .catch(
+            (error)=>{
+                toast.error('Could not delete Event!')
+                console.error(error.message)
+            })
+    }
+
     
 
     const loadCartData = async (email) => {
@@ -110,6 +122,7 @@ const StoreContextProvider = (props) => {
         cartItems,
         addToCart,
         removeFromCart,
+        deleteEventlist,
         getTotalCartAmount,
         token,
         setToken,
