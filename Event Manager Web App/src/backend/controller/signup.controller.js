@@ -21,13 +21,13 @@ export const createUser = async (req, res) => {
           email
         )
       ) {
-        res.status(400).send("All input is required");
+        res.status(400).send("All inputs are required");
       }
   
       const oldUser = await User.findOne({ email: email });
   
       if (oldUser) {
-        return res.status(409).send("User Already Exist. Please Login");
+        return res.status(409).send("User Already Exist, Please Login");
       }
       const salt = 10;
       const hashedPassword = await bcrypt.hash(password, salt);
@@ -40,10 +40,10 @@ export const createUser = async (req, res) => {
       const token = createSecretToken(user._id);
   
       res.cookie("token", token, {
-        path: "/", // Cookie is accessible from all paths
-        expires: new Date(Date.now() + 86400000), // Cookie expires in 1 day
-        secure: true, // Cookie will only be sent over HTTPS
-        httpOnly: true, // Cookie cannot be accessed via client-side scripts
+        path: "/", // Cookie is accessible from all paths //
+        expires: new Date(Date.now() + 86400000), // Cookie expires in 1 day //
+        secure: true, // Cookie will only be sent over HTTPS //
+        httpOnly: true, // Cookie cannot be accessed via client-side scripts //
         sameSite: "None",
       });
   
