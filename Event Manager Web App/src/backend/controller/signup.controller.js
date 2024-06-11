@@ -47,7 +47,7 @@ export const createUser = async (req, res) => {
         sameSite: "None",
       });
   
-      console.log("cookie set succesfully");
+      //console.log("cookie set succesfully");
   
       res.json(user);
     } catch (error) {

@@ -31,7 +31,13 @@ const Login = () => {
       navigate('/')
     }).catch((err) => {
       console.log(err.message)   
-      toast.error('Failed to Login: ' + err.message)
+      let statusCode = err.response.status
+      if( statusCode == 401){
+        toast.error('Failed to Login: User does not exist ')
+      }else if( statusCode == 402){
+        toast.error('Failed to Login: Invalid Credentials')
+      }
+     
      
     })
   }

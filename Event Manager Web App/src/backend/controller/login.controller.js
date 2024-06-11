@@ -11,18 +11,22 @@ const createSecretToken = (id) =>{
 
 export const login = async (req,res) =>{
     const {email,password} = req.body;
-    if (!(email && password)) {
+    if (email == null || password == null) {
         return res.status(400).json({ message: "All input is required" });
     }
 
     const user = await User.findOne({email:email});
    
-    console.log(user)
+   // console.log(user)
+
+    
 
     try{
+        if(!user){
+            return res.status(401).json({ message: "User doesn't exist" });
+        }else
         if(!(email && (await bycrypt.compare(password,user.password)))){
-            return res.status(404).json({ message: "Invalid credentials" });
-            
+            return res.status(402).json({ message: "Invalid credentials" });  
         }
         const token = createSecretToken(user._id)
     

@@ -9,7 +9,7 @@ router.post('/events', async (req, res) => {
   
     try {
       let cart = await Cart.findOne({email:email});
-      console.log(cart)
+      //console.log(cart)
       if (!cart) {
         cart = new Cart();
         cart.email = email;
@@ -27,7 +27,7 @@ router.post('/events', async (req, res) => {
   });
 router.get('/events/:email',async(req,res)=>{
     const email = req.params.email;
-    console.log(email);
+    //console.log(email);
     try{
         let cart_list  =  await Cart.find({email:email})
         res.status(201).json({ message: 'User Cart Items', cart_list });

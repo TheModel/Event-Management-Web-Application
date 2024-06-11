@@ -1,6 +1,6 @@
-import React from 'react'
+
 import './AboutUs.css'
-import { assets } from '../../assets/assets'
+
 
 const AboutUs = () => {
     return (
