@@ -4,7 +4,6 @@ import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Cart from './pages/Cart/Cart'
-import LoginPopup from './components/LoginPopup/LoginPopup'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dashboard_Add from './pages/Dashboard/Dashboard_Add'
@@ -21,7 +20,7 @@ const App = () => {
   return (
     <>
     <ToastContainer/>
-    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
+    
       <div className='app'>
       <Navbar setShowLogin={setShowLogin} />
         <Routes >
