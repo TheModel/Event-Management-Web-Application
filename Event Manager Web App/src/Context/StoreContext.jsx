@@ -97,12 +97,14 @@ const StoreContextProvider = (props) => {
         console.log(cartlist)
         
         try{
-            if(cartlist.events !== undefined)
+            if(cartlist !== undefined){
             setCartId(cartlist._id);
             setCartItems(cartlist.events);
+            }
            
         }catch(err){
             console.log(err.message)
+            setCartItems([])
         }
         
     }
@@ -125,14 +127,24 @@ const StoreContextProvider = (props) => {
         async function validateToken(){
              console.log(localStorage.getItem('token'))
              setToken(localStorage.getItem('token'))
-             await axios.post('http://localhost:3000/api/auth/token',{token:token})
-            .then((res)=>{
-                console.log(res.data);
-                const {valid} = res.data
-                setloggedIn(valid)
-            }).catch((err)=>{
-                console.error(err)
-            })
+             const token = localStorage.getItem('token')
+             const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            };
+
+                if(token !== null){
+                    await axios.post('http://localhost:3000/api/auth/token',{token:token},{headers})
+                    .then((res)=>{
+                        console.log(res.data);
+                        const {valid} = res.data
+                        setloggedIn(valid)
+                    }).catch((err)=>{
+                        console.error(err)
+                    })
+                }
+               
+            
            
         }
         loadData();
