@@ -33,7 +33,7 @@ const Addform = () => {
             email:user
           }
         console.log(formData)
-        await axios.post(url,formData).then(()=>{
+        await axios.post(url + "/api/events/",formData).then(()=>{
             toast.success('Event Created Successfully')
             fetchEventList();
         }).catch((err)=>{
