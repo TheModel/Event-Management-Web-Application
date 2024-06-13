@@ -7,7 +7,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-    const url = "http://localhost:3000"
+    const url = "https://event-management-web-application.onrender.com"
     const [event_list, setEventList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [cartId,setCartId] = useState(0);
@@ -112,7 +112,7 @@ const StoreContextProvider = (props) => {
     
 
     const logout =  async () =>{
-        await axios.get('http://localhost:3000/api/auth/logout')
+        await axios.get(url + '/api/auth/logout')
     }
     useEffect(() => {
         async function loadData() {
@@ -134,7 +134,7 @@ const StoreContextProvider = (props) => {
             };
 
                 if(token !== null){
-                    await axios.post('http://localhost:3000/api/auth/token',{token:token},{headers})
+                    await axios.post(url + '/api/auth/token',{token:token},{headers})
                     .then((res)=>{
                         console.log(res.data);
                         const {valid} = res.data

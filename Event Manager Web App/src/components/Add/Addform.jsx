@@ -8,7 +8,7 @@ import { StoreContext } from '../../Context/StoreContext'
 
 const Addform = () => {
     // const navigate = useNavigate();
-    const url = "http://localhost:3000/api/events/"
+    const url = "https://event-management-web-application.onrender.com"
     const {user,fetchEventList} = useContext(StoreContext);
     const [data, setData] = useState({
         title: "",
