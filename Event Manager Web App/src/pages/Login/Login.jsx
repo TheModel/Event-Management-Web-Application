@@ -20,7 +20,7 @@ const Login = () => {
 
     console.log(formData)
     if( formData.password !=="" && formData.email !==""){
-    await axios.post('http://localhost:3000/api/auth/login',formData).then((res)=>{
+    await axios.post('https://event-management-web-application.onrender.com',formData).then((res)=>{
       toast.success('Login Successfull: ' + formData.email)
       localStorage.setItem('token',`${res.data}`)
       localStorage.setItem('user',formData.email)

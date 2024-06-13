@@ -18,7 +18,7 @@ const Signup = () => {
 
     console.log(formData)
     if(formData.username !== "" && formData.password !=="" && formData.email !==""){
-    await axios.post('http://localhost:3000/api/auth/signup',formData).then((res)=>{
+    await axios.post('https://event-management-web-application.onrender.com',formData).then((res)=>{
       console.log(res.status,res.data,res.headers)
       toast.success('Account Successfully Created')
     }).catch((err) => {
