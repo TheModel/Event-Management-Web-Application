@@ -6,8 +6,10 @@ import { assets, url } from '../../assets/assets';
 
 const Order = () => {
 
+  // State to hold the list of orders
   const [orders, setOrders] = useState([]);
 
+  // Function to fetch all the orders from the server
   const fetchAllOrders = async () => {
     const response = await axios.get(`${url}/api/order/list`)
     if (response.data.success) {
@@ -19,6 +21,7 @@ const Order = () => {
     }
   }
 
+  // Function to handle the status change of an order
   const statusHandler = async (event,orderId) => {
     console.log(event,orderId);
     const response = await axios.post(`${url}/api/order/status`,{
@@ -32,6 +35,7 @@ const Order = () => {
   }
 
 
+  // Fetch all the orders when the component mounts
   useEffect(() => {
     fetchAllOrders();
   }, [])
