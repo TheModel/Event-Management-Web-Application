@@ -6,8 +6,20 @@
     /* background-color: azure; */
 }
 
+.brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand-text{
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
 .navbar .logo {
-    width: 90px;
+    width: 50px;
 }
 
 .navbar-menu {
@@ -98,7 +110,7 @@ position: relative;
 }
 @media (max-width:1050px) {
     .navbar .logo {
-        width: 140px;
+        width: 60px;
     }
 
     .navbar-menu {
@@ -121,7 +133,7 @@ position: relative;
 
 @media (max-width:900px) {
     .navbar .logo {
-        width: 120px;
+        width: 30px;
     }
 
     .navbar-menu {

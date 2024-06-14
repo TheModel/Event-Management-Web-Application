@@ -25,7 +25,14 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <Link to='/'><img className='logo' src={assets.logo} alt="" /></Link>
+      <div className='brand'>
+      <Link to='/'>
+        <img className='logo' src={assets.logo} alt="" />
+      </Link>
+      <span className='brand-text'>Eventify</span>
+      </div>
+      
+      
       <ul className="navbar-menu">
         <Link to="/" onClick={() => setMenu("home")} className={`${menu === "home" ? "active" : ""}`}>Home</Link>
         <a href='#explore-menu' onClick={() => setMenu("menu")} className={`${menu === "menu" ? "active" : ""}`}>Explore</a>

@@ -2,7 +2,7 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 import { ToastContainer } from 'react-toastify';
 import List from '../../components/List/List';
 import { useLocation } from 'react-router-dom';
-
+import '../../index.css'
 
 const ListDashBoard = () => {
 
