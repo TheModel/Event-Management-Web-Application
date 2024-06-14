@@ -40,6 +40,7 @@ const Order = () => {
     fetchAllOrders();
   }, [])
 
+  // Render the orders in the UI
   return (
     <div className='order add'>
       <h3>Order Page</h3>
