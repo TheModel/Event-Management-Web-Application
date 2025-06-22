@@ -69,12 +69,45 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
-    const fetchEventList = async () => {
-        const response = await axios.get(url + "/api/events/");
-        const data = response.data;
-        setEventList(data)
-        console.log(event_list)
-    }
+    const fetchEventList = () => {
+    const basePath = "/events/";
+    const allImages = [
+        "birthday.png", "birthday (2).png", "birthday (3).png",
+        "martialarts.png", "martialarts2.png", "martialarts3.png", "martialarts4.png", "martialarts5.png",
+        "meeting (2).png", "meeting (3).png", "meeting (4).png", "meeting (5).png", "meeting (6).png", 
+        "meeting (7).png", "meeting (8).png", "meeting (9).png", "Meeting.png", "meeting6.png",
+        "party.png", "party (2).png", "party (3).png", "party (4).png", "party (5).png", "Party3.png",
+        "political.png", "political (2).png", "political (3).png", "political (4).png", "political (5).png", "political (6).png",
+        "religious.png", "religious (2).png", "religious (3).png", "religious1.png",
+        "sports (2).png", "sports (3).png", "sports4.png", "sports5.png",
+        "wedding.png", "wedding (2).png", "wedding (3).png", "wedding (4).png"
+    ];
+
+    // categorize based on filename keywords
+    const categorized = allImages.map(file => {
+        let category = "other";
+        const lower = file.toLowerCase();
+
+        if (lower.includes("birthday")) category = "birthday";
+        else if (lower.includes("wedding")) category = "wedding";
+        else if (lower.includes("sports")) category = "sports";
+        else if (lower.includes("meeting")) category = "meeting";
+        else if (lower.includes("party")) category = "party";
+        else if (lower.includes("martial")) category = "martialarts";
+        else if (lower.includes("religious")) category = "religious";
+        else if (lower.includes("political")) category = "political";
+
+        return {
+            title: file.replace(/\.[^/.]+$/, ""), // Remove extension
+            category,
+            image: basePath + file,
+        };
+    });
+
+    setEventList(categorized);
+    console.log("Local Event List:", categorized);
+};
+
 
     const deleteEventlist = async (event_id)=>{
         

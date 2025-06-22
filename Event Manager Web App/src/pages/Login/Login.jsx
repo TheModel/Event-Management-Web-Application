@@ -24,6 +24,7 @@ const Login = () => {
       toast.success('Login Successfull: ' + formData.email)
       localStorage.setItem('token',`${res.data}`)
       localStorage.setItem('user',formData.email)
+      localStorage.removeItem('guestCart'); // Clear the guest cart on login
       const token = localStorage.getItem('token')
       const user = localStorage.getItem('user')
       setToken(token)
